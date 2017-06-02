@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TalkServer", "TalkServer\TalkServer.vcxproj", "{6F34D783-5FA4-4E62-AA9A-1A01152D5581}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TalkClient", "TalkClient\TalkClient.vcxproj", "{16E569E7-7D63-4F23-B98B-95F34FB2441E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{148D3882-3E27-4DDE-A301-7F4425E9C324}"
+	ProjectSection(SolutionItems) = preProject
+		include.cpp = include.cpp
+		include.h = include.h
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6F34D783-5FA4-4E62-AA9A-1A01152D5581}.Debug|Win32.ActiveCfg = Debug|Win32
+		{6F34D783-5FA4-4E62-AA9A-1A01152D5581}.Debug|Win32.Build.0 = Debug|Win32
+		{6F34D783-5FA4-4E62-AA9A-1A01152D5581}.Release|Win32.ActiveCfg = Release|Win32
+		{6F34D783-5FA4-4E62-AA9A-1A01152D5581}.Release|Win32.Build.0 = Release|Win32
+		{16E569E7-7D63-4F23-B98B-95F34FB2441E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{16E569E7-7D63-4F23-B98B-95F34FB2441E}.Debug|Win32.Build.0 = Debug|Win32
+		{16E569E7-7D63-4F23-B98B-95F34FB2441E}.Release|Win32.ActiveCfg = Release|Win32
+		{16E569E7-7D63-4F23-B98B-95F34FB2441E}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
