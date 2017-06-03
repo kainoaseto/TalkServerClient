@@ -17,6 +17,9 @@
     <ClCompile Include="server.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\include.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="server.h">

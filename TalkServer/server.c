@@ -33,27 +33,50 @@ int start_server()
 		return 4;
 	}
 
-	struct sockaddr_in serversock_in;
+	struct sockaddr_in server_sock_in;
 	// Get a random open port
 	USHORT port = 0;
 
-	ZeroMemory(&serversock_in, sizeof(struct sockaddr_in));
-	serversock_in.sin_family = AF_INET;
-	serversock_in.sin_port = htons(port);
-	CopyMemory(&serversock_in.sin_addr, host->h_addr_list[0], host->h_length);
+	ZeroMemory(&server_sock_in, sizeof(struct sockaddr_in));
+	server_sock_in.sin_family = AF_INET;
+	server_sock_in.sin_port = htons(port);
+	CopyMemory(&server_sock_in.sin_addr, host->h_addr_list[0], host->h_length);
 
-	if ((bind(server_sock, (const struct sockaddr*)&serversock_in, sizeof(serversock_in))) == SOCKET_ERROR)
+	if ((bind(server_sock, (const struct sockaddr*)&server_sock_in, sizeof(server_sock_in))) == SOCKET_ERROR)
 	{
 		printf("Failed to bind: %08X\n", WSAGetLastError());
 		return 5;
 	}
 
+	if (listen(server_sock, SOMAXCONN) != 0)
+	{
+		printf("Failed to start listener: %08X\n", WSAGetLastError());
+		return 6;
+	}
+
+	int server_sock_in_len = sizeof(struct sockaddr_in);
+	if (getsockname(server_sock, (struct sockaddr*)&server_sock_in, &server_sock_in_len) != 0)
+	{
+		printf("Failed to retrieve populated socket data: %08X\n", GetLastError());
+		return 7;
+	}
+
 	printf("###########################################################\n");
-	printf("	Server started on host '%s' and port '%i'\n", server_hostname, ntohs(serversock_in.sin_port));
+	printf("	Server started on host '%s' and port '%i'\n", server_hostname, htons(server_sock_in.sin_port));
 	printf("###########################################################\n");
 
 	printf("Listening for client...\n");
-	// TODO: Listen here until we find the client
 	
+	struct sockaddr_in client_sock_in;
+	int client_sock_in_len = sizeof(struct sockaddr_in);
+	SOCKET client_sock = accept(server_sock, (struct sockaddr*)&client_sock_in, &client_sock_in_len);
+	
+	printf("Connected!\n");
+
+	// We found a client, lets start the chat
+	start_chat(client_sock, &client_sock_in);
+
+	closesocket(server_sock);
+
 	return 0;
 }
