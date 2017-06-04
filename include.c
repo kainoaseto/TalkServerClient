@@ -137,6 +137,8 @@ DWORD WINAPI talk(void* args)
 			memset(rmt_data.msg_buf, 0, MAX_INPUT);
 			// Reset flag
 			send_input = FALSE;
+			// Reset count
+			char_count = 0;
 		}
 	}
 }
